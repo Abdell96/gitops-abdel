@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todo-api-abdel
+  namespace: todo-api-abdel
+  labels:
+    app: todo-api-abdel
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: todo-api-abdel
+  template:
+    metadata:
+      labels:
+        app: todo-api-abdel
+    spec:
+      containers:
+      - name: todo-api-abdel
+        image: nginx:alpine
+        ports:
+        - containerPort: 80
+          name: http
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
+          limits:
+            cpu: "500m"
+            memory: "256Mi"
